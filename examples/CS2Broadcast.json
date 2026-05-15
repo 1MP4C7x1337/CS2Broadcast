@@ -1,0 +1,8 @@
+{
+  "__meta": "CS2Broadcast - by 1MP4C7 | ImpactGuard Systems",
+  "ws_port": 7070,
+  "http_port": 7071,
+  "auth_token": "",
+  "log_connections": true,
+  "broadcast_chat": true
+}

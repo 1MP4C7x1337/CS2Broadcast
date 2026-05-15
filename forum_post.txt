@@ -1,0 +1,57 @@
+[b]CS2Broadcast — real-time CS2 events for external apps[/b]
+
+[i]Made by [url=https://github.com/1MP4C7]1MP4C7[/url] @ ImpactGuard Systems[/i]
+
+[b]What it does[/b]
+CS2Broadcast runs inside your CounterStrikeSharp-enabled CS2 server and opens two local services: a JSON [b]WebSocket[/b] stream with live gameplay events and a simple [b]HTTP REST[/b] API for server state plus admin helpers (broadcast chat / kick). Perfect for overlays, Discord bots, telemetry, LAN scoreboards, or any automation that wants clean JSON without scraping logs.
+
+[b]Download & source[/b]
+• Source + issues: [url=GITHUB_URL]GitHub[/url]
+• Ready-to-drop build: [url=DOWNLOAD_URL]Latest release[/url]
+
+[b]Install (typical dedicated box)[/b]
+[list=1]
+[*]Copy [b]CS2Broadcast.dll[/b] into [c]game/csgo/addons/counterstrikesharp/plugins/[/c] on the machine that already runs CounterStrikeSharp.
+[*]Create [c]counterstrikesharp/configs/plugins/CS2Broadcast/CS2Broadcast.json[/c] (sample below) and tweak [b]ws_port[/b] / [b]http_port[/b] / [b]auth_token[/b].
+[*]Load the module: [c]css_plugins load CS2Broadcast[/c] (or restart the container / game server).
+[*]Windows hosts: bind URL ACLs if HttpListener rejects wildcards ([c]netsh http add urlacl url=http://*:7070/ user=Everyone[/c], repeat for REST port).
+[*]Open firewall holes only if remote dashboards must attach—otherwise bind proxies / SSH tunnels instead of exposing ports globally.
+[/list]
+
+[b]Quick socket demo (browser / Node)[/b]
+[i]Swap host/port/token for your deployment:[/i]
+
+[code]
+const ws = new WebSocket('ws://127.0.0.1:7070/ws?token=YOUR_SHARED_SECRET');
+
+ws.onopen = () => console.log('CS2Broadcast socket ready');
+ws.onmessage = (evt) => {
+  const payload = JSON.parse(evt.data);
+  console.log(payload.event, payload.data);
+};
+[/code]
+
+[b]Shipped REST helpers[/b]
+[list]
+[*][c]GET /state[/c] — hostname, map, scores, approximate round counter
+[*][c]GET /players[/c] — cached roster snapshot with ping/score/alive bits
+[*][c]GET /scores[/c] — `{ "ct_score": ..., "t_score": ... }`
+[*][c]POST /say[/c] — `{ "message": "Hello!" }`
+[*][c]POST /kick[/c] — `{ "steamid": "76561198...", "reason": "Automation kick" }`
+[/list]
+
+[b]Example config[/b]
+[code]
+{
+  "__meta": "CS2Broadcast - by 1MP4C7 | ImpactGuard Systems",
+  "ws_port": 7070,
+  "http_port": 7071,
+  "auth_token": "",
+  "log_connections": true,
+  "broadcast_chat": true
+}
+[/code]
+
+Questions? Reply here or open a ticket on GitHub — please attach logs from [c]addons/counterstrikesharp/logs[/c] when reporting bugs.
+
+[b]Author:[/b] 1MP4C7 | ImpactGuard Systems
