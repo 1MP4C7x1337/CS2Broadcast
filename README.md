@@ -4,7 +4,7 @@
 ![Target](https://img.shields.io/badge/.NET-8.0-purple.svg)
 ![CounterStrikeSharp](https://img.shields.io/badge/CounterStrikeSharp-API-orange.svg)
 
-Made by [1MP4C7](https://github.com/1MP4C7) @ ImpactGuard Systems
+Made by [1MP4C7x1337](https://github.com/1MP4C7x1337) @ ImpactGuard Systems
 
 **CS2Broadcast** exposes Counter-Strike 2 gameplay events over a thread-safe WebSocket fan-out plus a compact JSON REST API so companion apps, overlays, bots, and dashboards can integrate without touching SourceMod.
 
@@ -18,7 +18,7 @@ Made by [1MP4C7](https://github.com/1MP4C7) @ ImpactGuard Systems
 
 ## Installation
 
-1. Download the latest `CS2Broadcast.dll` from **[DOWNLOAD_URL]** or compile this repository locally (`dotnet build -c Release`).
+1. Download the latest packaged release (`CS2Broadcast-v1.0.0.zip`) from **[GitHub Releases](https://github.com/1MP4C7x1337/CS2Broadcast/releases/latest)** (direct asset: [`CS2Broadcast-v1.0.0.zip`](https://github.com/1MP4C7x1337/CS2Broadcast/releases/latest/download/CS2Broadcast-v1.0.0.zip)) or compile this repository locally (`dotnet build -c Release`).
 2. Copy `CS2Broadcast.dll` into your CS2 server's CounterStrikeSharp plugins folder (typically `game/csgo/addons/counterstrikesharp/plugins/`).
 3. Ensure required CounterStrikeSharp dependencies are already installed on the host (standard CSS deployment).
 4. Drop the configuration file under `counterstrikesharp/configs/plugins/CS2Broadcast/CS2Broadcast.json` (see `examples/CS2Broadcast.json` for a starter template).
@@ -338,7 +338,7 @@ Timestamps are UTC ISO-8601 strings ending with `Z`.
 
 ## Contributing
 
-Issues & PRs are welcome via **[GITHUB_URL]**. Please keep discussions constructive and include reproduction steps plus relevant logs (`counterstrikesharp/logs`). When hacking locally:
+Issues & PRs are welcome on **[github.com/1MP4C7x1337/CS2Broadcast](https://github.com/1MP4C7x1337/CS2Broadcast)**. Please keep discussions constructive and include reproduction steps plus relevant logs (`counterstrikesharp/logs`). When hacking locally:
 
 1. Fork / clone.
 2. `dotnet build -c Release`.
@@ -351,4 +351,4 @@ Distributed under the **GNU General Public License v3.0**. See [https://www.gnu.
 
 ---
 
-CS2Broadcast is a project by 1MP4C7 — ImpactGuard Systems
+CS2Broadcast is a project by 1MP4C7x1337 — ImpactGuard Systems
